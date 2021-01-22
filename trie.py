@@ -1,6 +1,3 @@
-import pprint
-
-
 def make_trie(iterable):
     root = {}
     for s in iterable:
@@ -11,12 +8,12 @@ def make_trie(iterable):
     return root
 
 
-def contains(line, trie):
+def contains(text, trie):
     if '' in trie:
         return True
 
     nodes = []
-    for c in line:
+    for c in text:
         nodes.append(trie)
         i = 0
         while i < len(nodes):
@@ -33,15 +30,11 @@ def contains(line, trie):
     return False
 
 
-def main():
-    with open('patterns.txt') as f:
-        trie = make_trie(line.replace('\n', '') for line in f)
+with open('patterns.txt') as f:
+    trie = make_trie(line.replace('\n', '') for line in f)
 
-    with open('corpus.txt') as f:
-        for line in f:
-            line = line.replace('\n','')
-            if contains(line, trie):
-                print(line)
-
-
-main()
+with open('corpus.txt') as f:
+    for line in f:
+        line = line.replace('\n','')
+        if contains(line, trie):
+            print(line)

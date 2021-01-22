@@ -1,4 +1,3 @@
-
 with open('patterns.txt') as f:
     patterns = tuple(line.replace('\n','') for line in f)
 
